@@ -1,0 +1,48 @@
+[
+    {
+      "time": "2025-04-12T09:00:00",
+      "signal": "long",
+      "tp": 1.5,
+      "sl": -0.5,
+      "ai_prediction": "long",
+      "rsi": 29.8,
+      "ema": 27651.2,
+      "tema": 27708.4,
+      "macd": -38.1,
+      "bb": "lower",
+      "sentiment": 0.35,
+      "summary": "과매도 구간에서 강한 반등 가능성",
+      "profit": 0.85
+    },
+    {
+      "time": "2025-04-12T09:15:00",
+      "signal": "hold",
+      "tp": 0.0,
+      "sl": 0.0,
+      "ai_prediction": "hold",
+      "rsi": 50.2,
+      "ema": 27802.1,
+      "tema": 27810.4,
+      "macd": 1.2,
+      "bb": "middle",
+      "sentiment": -0.1,
+      "summary": "시장 방향성 혼조",
+      "profit": 0.0
+    },
+    {
+      "time": "2025-04-12T09:30:00",
+      "signal": "short",
+      "tp": 1.0,
+      "sl": -0.5,
+      "ai_prediction": "short",
+      "rsi": 71.5,
+      "ema": 28040.1,
+      "tema": 28070.5,
+      "macd": 52.4,
+      "bb": "upper",
+      "sentiment": -0.45,
+      "summary": "과매수 및 부정적 심리 강화",
+      "profit": 1.0
+    }
+  ]
+  

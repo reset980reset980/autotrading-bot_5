@@ -1,0 +1,32 @@
+{
+    "mode": "auto",
+    "real_trade_threshold": 0.9,
+    "testnet_threshold": 0.75,
+  
+    "bitget": {
+      "api_key": "bg_685952997e02514ad7afc7ac3a636f28",
+      "api_secret": "YOUR_BITGET_API_SECRET",
+      "passphrase": "symphony99"
+    },
+    "bybit": {
+      "api_key": "wTw0q9r2Wn9opbjiUB",
+      "api_secret": "L6baxxiFossZziZMcH5gmq6YTFCyckFYgpSL",
+      "base_url": "https://api-testnet.bybit.com"
+    },
+  
+    "use_ai_sl_tp": "yes",
+    "stop_loss_percentage": 0.5,
+    "take_profit_percentage": 1.0,
+    "risk_percentage": 1.0,
+    "dynamic_leverage": "yes",
+    "leverage": 5,
+    "symbols": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "XRP/USDT"
+    ],
+    "timeframe": "15m",
+    "use_ai_feedback": "yes",
+    "log_level": "INFO"
+  }
+  

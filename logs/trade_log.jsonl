@@ -1,0 +1,7 @@
+{"timestamp": "2025-04-12 00:32:00", "strategy": "Short", "source": "auto_trader", "return": -1.2}
+{"timestamp": "2025-04-12 00:33:24", "strategy": "Short", "source": "auto_trader", "return": -1.2}
+{"timestamp": "2025-04-12 00:48:48", "strategy": "Short", "source": "auto_trader", "return": -1.2}
+{"timestamp": "2025-04-12T22:38:46", "strategy": "Hold", "source": "auto_trader", "return": 0.0}
+{"timestamp": "2025-04-13T01:05:37", "strategy": "Hold", "source": "auto_trader", "return": 0.0}
+{"timestamp": "2025-04-13T01:12:53", "strategy": "Hold", "source": "auto_trader", "return": 0.0}
+{"timestamp": "2025-04-13T01:20:44", "strategy": "Long", "source": "auto_trader", "return": 0.0}

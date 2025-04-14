@@ -1,0 +1,999 @@
+2025-04-14 01:06:15,034 - INFO - 사용자 선택: 7
+2025-04-14 01:06:15,034 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:06:15,147 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:06:15,147 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:06:16,235 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:07:16,394 - INFO - 사용자 선택: 4
+2025-04-14 01:07:18,607 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 01:07:18,712 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:07:18,712 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:07:18,712 - INFO - 자동 백업 시작
+2025-04-14 01:07:18,825 - INFO - 변경 사항 확인됨
+2025-04-14 01:07:18,925 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 01:07:19,022 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 01:07:19,152 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 01:07:21,773 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_3/security/secret-scanning/unblock-secret/2vg602O4AzNVUPBbf7LQLLV5EHv        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_3.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_3.git'
+
+2025-04-14 01:07:22,801 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_3/security/secret-scanning/unblock-secret/2vg602O4AzNVUPBbf7LQLLV5EHv        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_3.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_3.git'
+
+2025-04-14 01:08:14,723 - INFO - 사용자 선택: 4
+2025-04-14 01:08:17,442 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 01:08:17,541 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:08:17,541 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:08:17,541 - INFO - 자동 백업 시작
+2025-04-14 01:08:17,646 - INFO - 커밋할 변경 사항 없음
+2025-04-14 01:08:18,663 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 01:08:25,540 - INFO - 사용자 선택: 7
+2025-04-14 01:08:25,540 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:08:25,641 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:08:25,641 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:08:26,636 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:08:34,809 - INFO - 사용자 선택: 8
+2025-04-14 01:08:43,073 - ERROR - 레포 삭제 실패: {"message":"Bad credentials","documentation_url":"https://docs.github.com/rest","status":"401"}
+2025-04-14 01:08:44,072 - INFO - Telegram 메시지 전송: \u274c 레포지토리 삭제 실패
+{"message":"Bad credentials","documentation_url":"https://docs.github.com/rest","status":"401"}
+2025-04-14 01:08:59,785 - INFO - 사용자 선택: 9
+2025-04-14 01:08:59,785 - INFO - 프로그램 종료
+2025-04-14 01:22:33,232 - INFO - 사용자 선택: 7
+2025-04-14 01:22:33,232 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:22:33,344 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:22:33,344 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:22:34,382 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:22:39,286 - INFO - 사용자 선택: 4
+2025-04-14 01:22:46,441 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 01:22:46,545 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:22:46,545 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:22:46,545 - INFO - 자동 백업 시작
+2025-04-14 01:22:46,654 - INFO - 커밋할 변경 사항 없음
+2025-04-14 01:22:47,620 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 01:22:53,462 - INFO - 사용자 선택: 7
+2025-04-14 01:22:53,462 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:22:53,562 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:22:53,562 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:22:54,563 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:22:59,453 - INFO - 사용자 선택: 4
+2025-04-14 01:23:04,001 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 01:23:04,106 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:23:04,106 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:23:04,106 - INFO - 자동 백업 시작
+2025-04-14 01:23:04,210 - INFO - 커밋할 변경 사항 없음
+2025-04-14 01:23:05,210 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 01:23:07,808 - INFO - 사용자 선택: 7
+2025-04-14 01:23:07,808 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:23:07,909 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:23:07,909 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:23:08,913 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:23:14,372 - INFO - 사용자 선택: 8
+2025-04-14 01:23:18,344 - INFO - 레포지토리 삭제: autotrading-bot_4
+2025-04-14 01:23:19,347 - INFO - Telegram 메시지 전송: \U0001f5d1\ufe0f 레포지토리 삭제 완료: autotrading-bot_4
+2025-04-14 01:23:22,336 - INFO - 사용자 선택: 9
+2025-04-14 01:23:22,337 - INFO - 프로그램 종료
+2025-04-14 01:41:16,718 - INFO - 사용자 선택: 7
+2025-04-14 01:41:16,718 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:41:16,836 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:41:16,836 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:41:17,859 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:41:33,691 - INFO - 사용자 선택: 9
+2025-04-14 01:41:33,691 - INFO - 프로그램 종료
+2025-04-14 01:48:00,007 - INFO - 사용자 선택: 9
+2025-04-14 01:48:00,007 - INFO - 프로그램 종료
+2025-04-14 01:51:47,446 - INFO - 사용자 선택: 7
+2025-04-14 01:51:47,446 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:51:47,558 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:51:47,558 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:51:48,571 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:51:52,215 - INFO - 사용자 선택: 6
+2025-04-14 01:51:52,215 - ERROR - VSCode 실행 오류: name 'PROJECT_EXAMPLE_PATH' is not defined
+2025-04-14 01:52:05,647 - INFO - 사용자 선택: 1
+2025-04-14 01:52:05,648 - INFO - 자동 백업 시작
+2025-04-14 01:52:05,688 - INFO - Untracked files 감지됨
+2025-04-14 01:52:06,223 - INFO - 변경 사항 확인됨
+2025-04-14 01:52:06,335 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 01:52:06,432 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 01:52:06,584 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 01:52:11,380 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_3/security/secret-scanning/unblock-secret/2vg602O4AzNVUPBbf7LQLLV5EHv        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_3.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_3.git'
+
+2025-04-14 01:52:12,391 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_3/security/secret-scanning/unblock-secret/2vg602O4AzNVUPBbf7LQLLV5EHv        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_3.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_3.git'
+
+2025-04-14 01:52:14,064 - INFO - 사용자 선택: 2
+2025-04-14 01:52:14,064 - INFO - 수동 백업 시작
+2025-04-14 01:52:14,166 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch .env > nul 2>&1
+2025-04-14 01:52:14,265 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .venv > nul 2>&1
+2025-04-14 01:52:14,366 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .vscode > nul 2>&1
+2025-04-14 01:52:14,465 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.log > nul 2>&1
+2025-04-14 01:52:14,565 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch backup_log.txt > nul 2>&1
+2025-04-14 01:52:14,664 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.exe > nul 2>&1
+2025-04-14 01:52:14,763 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.bat > nul 2>&1
+2025-04-14 01:52:14,864 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.spec > nul 2>&1
+2025-04-14 01:52:14,961 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .streamlit > nul 2>&1
+2025-04-14 01:52:15,057 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 01:52:15,159 - INFO - Git 명령 성공 (수동 백업 정리): git add .gitignore
+2025-04-14 01:52:15,258 - INFO - 커밋할 변경 사항 없음
+2025-04-14 01:52:16,249 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 01:52:23,154 - INFO - 사용자 선택: 3
+2025-04-14 01:52:25,630 - INFO - 레포지토리 생성: autotrading-bot_4
+2025-04-14 01:52:25,735 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 01:52:25,837 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:52:25,837 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:52:25,837 - INFO - 자동 백업 시작
+2025-04-14 01:52:25,937 - INFO - 커밋할 변경 사항 없음
+2025-04-14 01:52:26,971 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 01:52:31,770 - INFO - 사용자 선택: 7
+2025-04-14 01:52:31,770 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 01:52:31,874 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 01:52:31,874 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:52:32,864 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 01:52:39,211 - INFO - 사용자 선택: 4
+2025-04-14 01:52:40,932 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 01:52:41,036 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:52:41,036 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 01:52:41,036 - INFO - 자동 백업 시작
+2025-04-14 01:52:41,136 - INFO - 커밋할 변경 사항 없음
+2025-04-14 01:52:42,146 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 01:52:46,344 - INFO - 사용자 선택: 8
+2025-04-14 01:52:49,885 - INFO - 레포지토리 삭제: autotrading-bot_4
+2025-04-14 01:52:50,934 - INFO - Telegram 메시지 전송: \U0001f5d1\ufe0f 레포지토리 삭제 완료: autotrading-bot_4
+2025-04-14 01:53:16,449 - INFO - 사용자 선택: 6
+2025-04-14 01:53:16,450 - ERROR - VSCode 실행 오류: name 'PROJECT_EXAMPLE_PATH' is not defined
+2025-04-14 01:54:36,455 - INFO - 사용자 선택: 6
+2025-04-14 01:54:36,472 - ERROR - VSCode 실행 오류: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+2025-04-14 01:55:44,814 - INFO - 사용자 선택: 6
+2025-04-14 01:55:44,815 - ERROR - VSCode 실행 오류: [WinError 193] %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+2025-04-14 19:53:07,337 - INFO - 사용자 선택: 7
+2025-04-14 19:53:07,337 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 19:53:07,479 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 19:53:07,479 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 19:53:08,526 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 19:53:12,543 - INFO - 사용자 선택: 9
+2025-04-14 19:53:12,543 - INFO - 프로그램 종료
+2025-04-14 19:53:36,233 - INFO - 사용자 선택: 7
+2025-04-14 19:53:36,233 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 19:53:36,376 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 19:53:36,376 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 19:53:37,361 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 19:54:01,797 - INFO - 사용자 선택: 3
+2025-04-14 19:54:04,903 - INFO - 레포지토리 생성: autotrading-bot_4
+2025-04-14 19:54:05,046 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 19:54:05,174 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 19:54:05,174 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 19:54:05,174 - INFO - 자동 백업 시작
+2025-04-14 19:54:05,221 - INFO - Untracked files 감지됨
+2025-04-14 19:54:05,725 - INFO - 변경 사항 확인됨
+2025-04-14 19:54:05,853 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 19:54:05,980 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 19:54:06,186 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 19:54:11,656 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 19:54:12,614 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 19:54:25,323 - INFO - 사용자 선택: 7
+2025-04-14 19:54:25,323 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 19:54:25,450 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 19:54:25,450 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 19:54:26,435 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 19:54:46,129 - INFO - 사용자 선택: 1
+2025-04-14 19:54:46,129 - INFO - 자동 백업 시작
+2025-04-14 19:54:46,258 - INFO - 커밋할 변경 사항 없음
+2025-04-14 19:54:47,259 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 19:55:13,432 - INFO - 사용자 선택: 2
+2025-04-14 19:55:13,432 - INFO - 수동 백업 시작
+2025-04-14 19:55:13,574 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch .env > nul 2>&1
+2025-04-14 19:55:13,700 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .venv > nul 2>&1
+2025-04-14 19:55:13,828 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .vscode > nul 2>&1
+2025-04-14 19:55:13,955 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.log > nul 2>&1
+2025-04-14 19:55:14,081 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch backup_log.txt > nul 2>&1
+2025-04-14 19:55:14,208 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.exe > nul 2>&1
+2025-04-14 19:55:14,303 - ERROR - Git 오류 (수동 백업 정리): \ufffd\u06b5\ufffd 1\ufffd\ufffd(\ufffd\ufffd) \ufffd\ufffd\ufffd\U00037ebc\ufffd\ufffd\u03f4\ufffd \ufffd\ufffd\ufffd\ufffd
+\ufffd\u06b5\ufffd\ufffd\ufffd \ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd \ufffd\ufffd\ufffd\u07fd\ufffd\ufffd\u03f4\ufffd.
+
+2025-04-14 19:55:15,323 - INFO - Telegram 메시지 전송: \u274c Git 오류 (수동 백업 정리) 발생
+\ufffd\u06b5\ufffd 1\ufffd\ufffd(\ufffd\ufffd) \ufffd\ufffd\ufffd\U00037ebc\ufffd\ufffd\u03f4\ufffd \ufffd\ufffd\ufffd\ufffd
+\ufffd\u06b5\ufffd\ufffd\ufffd \ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd \ufffd\ufffd\ufffd\u07fd\ufffd\ufffd\u03f4\ufffd.
+
+2025-04-14 19:55:15,450 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.spec > nul 2>&1
+2025-04-14 19:55:15,577 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .streamlit > nul 2>&1
+2025-04-14 19:55:15,703 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 19:55:15,831 - INFO - Git 명령 성공 (수동 백업 정리): git add .gitignore
+2025-04-14 19:55:15,958 - INFO - 커밋할 변경 사항 없음
+2025-04-14 19:55:16,929 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 19:58:27,673 - INFO - 사용자 선택: 6
+2025-04-14 19:58:27,673 - INFO - PATH 환경 변수: C:\Program Files\Eclipse Adoptium\jdk-11.0.22.7-hotspot\bin;C:\Program Files\Python311\Scripts\;C:\Program Files\Python311\;C:\Program Files\Python311\include\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\TA-Lib\bin;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\Users\KSD\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\KSD\AppData\Local\Programs\Python\Python310\;C:\Users\KSD\AppData\Local\Programs\Python\Launcher\;C:\Users\KSD\AppData\Local\Microsoft\WindowsApps;C:\Users\KSD\AppData\Local\Programs\Microsoft VS Code\bin
+2025-04-14 19:58:27,680 - INFO - VSCode 실행
+2025-04-14 20:13:40,250 - INFO - 사용자 선택: 6
+2025-04-14 20:13:40,250 - INFO - PATH 환경 변수: C:\Program Files\Eclipse Adoptium\jdk-11.0.22.7-hotspot\bin;C:\Program Files\Python311\Scripts\;C:\Program Files\Python311\;C:\Program Files\Python311\include\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\TA-Lib\bin;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\Users\KSD\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\KSD\AppData\Local\Programs\Python\Python310\;C:\Users\KSD\AppData\Local\Programs\Python\Launcher\;C:\Users\KSD\AppData\Local\Microsoft\WindowsApps;C:\Users\KSD\AppData\Local\Programs\Microsoft VS Code\bin
+2025-04-14 20:13:40,250 - INFO - VSCode 실행
+2025-04-14 20:13:53,470 - INFO - 사용자 선택: 7
+2025-04-14 20:13:53,470 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 20:13:53,614 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 20:13:53,614 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 20:13:54,645 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-14 20:13:57,436 - INFO - 사용자 선택: 1
+2025-04-14 20:13:57,436 - INFO - 자동 백업 시작
+2025-04-14 20:13:57,943 - INFO - 변경 사항 확인됨
+2025-04-14 20:13:58,087 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 20:13:58,211 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 20:13:58,386 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 20:14:04,390 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 20:14:05,358 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 20:14:18,967 - INFO - 사용자 선택: 2
+2025-04-14 20:14:18,967 - INFO - 수동 백업 시작
+2025-04-14 20:14:19,094 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch .env > nul 2>&1
+2025-04-14 20:14:19,237 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .venv > nul 2>&1
+2025-04-14 20:14:19,365 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .vscode > nul 2>&1
+2025-04-14 20:14:19,493 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.log > nul 2>&1
+2025-04-14 20:14:19,620 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch backup_log.txt > nul 2>&1
+2025-04-14 20:14:19,746 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.exe > nul 2>&1
+2025-04-14 20:14:19,873 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.bat > nul 2>&1
+2025-04-14 20:14:20,000 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.spec > nul 2>&1
+2025-04-14 20:14:20,127 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch -r .streamlit > nul 2>&1
+2025-04-14 20:14:20,238 - INFO - Git 명령 성공 (수동 백업 정리): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 20:14:20,382 - INFO - Git 명령 성공 (수동 백업 정리): git add .gitignore
+2025-04-14 20:14:20,508 - INFO - 커밋할 변경 사항 없음
+2025-04-14 20:14:21,513 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 20:14:43,851 - INFO - 사용자 선택: 1
+2025-04-14 20:14:43,851 - INFO - 자동 백업 시작
+2025-04-14 20:14:43,883 - INFO - Untracked files 감지됨
+2025-04-14 20:14:43,978 - INFO - 변경 사항 확인됨
+2025-04-14 20:14:44,106 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 20:14:44,233 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 20:14:44,375 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 20:14:50,580 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 20:14:51,583 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 20:46:23,938 - INFO - 사용자 선택: 1
+2025-04-14 20:46:23,938 - INFO - 자동 백업 시작
+2025-04-14 20:46:24,066 - INFO - 커밋할 변경 사항 없음
+2025-04-14 20:46:25,106 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 20:46:54,091 - INFO - 사용자 선택: 1
+2025-04-14 20:46:54,091 - INFO - 자동 백업 시작
+2025-04-14 20:46:54,139 - INFO - Untracked files 감지됨
+2025-04-14 20:46:54,234 - INFO - 변경 사항 확인됨
+2025-04-14 20:46:54,360 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 20:46:54,487 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 20:46:54,639 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 20:47:01,023 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 20:47:02,036 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_4/security/secret-scanning/unblock-secret/2viVnlkbCYjOBq8mgnDwoCdJCDE        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_4.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_4.git'
+
+2025-04-14 20:56:21,986 - INFO - 사용자 선택: 3
+2025-04-14 20:56:24,764 - INFO - 레포지토리 생성: autotrading-bot_5
+2025-04-14 20:56:24,904 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 20:56:25,046 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_5.git
+2025-04-14 20:56:25,046 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_5.git
+2025-04-14 20:56:25,046 - INFO - 자동 백업 시작
+2025-04-14 20:56:25,092 - INFO - Untracked files 감지됨
+2025-04-14 20:56:25,187 - INFO - 변경 사항 확인됨
+2025-04-14 20:56:25,319 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 20:56:25,470 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 20:56:25,634 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 20:56:32,093 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_5/security/secret-scanning/unblock-secret/2vidNlwm4JefrrecGsbsMrK63tZ        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_5.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_5.git'
+
+2025-04-14 20:56:33,131 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 508037885db578498c6734cbfcaf85316bedc675        
+remote:            path: git_backup_manager.py:8        
+remote:          - commit: 76911c70af577a7552ae9d4ce25f6a4358fd6482        
+remote:            path: git_backup_manager.py:8        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_5/security/secret-scanning/unblock-secret/2vidNlwm4JefrrecGsbsMrK63tZ        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_5.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_5.git'
+
+2025-04-14 21:02:22,703 - INFO - 사용자 선택: 7
+2025-04-14 21:02:22,703 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 21:02:22,830 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 21:02:22,830 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_5.git
+2025-04-14 21:02:24,283 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_5.git
+2025-04-14 21:02:30,060 - INFO - 사용자 선택: 4
+2025-04-14 21:02:31,156 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-14 21:02:31,300 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 21:02:31,300 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 21:02:31,300 - INFO - 자동 백업 시작
+2025-04-14 21:02:31,427 - INFO - 커밋할 변경 사항 없음
+2025-04-14 21:02:32,528 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 21:02:34,741 - INFO - 사용자 선택: 7
+2025-04-14 21:02:34,741 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 21:02:34,867 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 21:02:34,867 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 21:02:35,886 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_3.git
+2025-04-14 21:02:41,824 - INFO - 사용자 선택: 8
+2025-04-14 21:02:45,760 - INFO - 레포지토리 삭제: autotrading-bot_4
+2025-04-14 21:02:46,762 - INFO - Telegram 메시지 전송: \U0001f5d1\ufe0f 레포지토리 삭제 완료: autotrading-bot_4
+2025-04-14 21:02:52,021 - INFO - 사용자 선택: 8
+2025-04-14 21:02:55,973 - INFO - 레포지토리 삭제: autotrading-bot_5
+2025-04-14 21:02:56,935 - INFO - Telegram 메시지 전송: \U0001f5d1\ufe0f 레포지토리 삭제 완료: autotrading-bot_5
+2025-04-14 21:25:30,896 - INFO - 사용자 선택: 6
+2025-04-14 21:25:30,896 - INFO - PATH 환경 변수: C:\Program Files\Eclipse Adoptium\jdk-11.0.22.7-hotspot\bin;C:\Program Files\Python311\Scripts\;C:\Program Files\Python311\;C:\Program Files\Python311\include\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\TA-Lib\bin;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\Users\KSD\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\KSD\AppData\Local\Programs\Python\Python310\;C:\Users\KSD\AppData\Local\Programs\Python\Launcher\;C:\Users\KSD\AppData\Local\Microsoft\WindowsApps;C:\Users\KSD\AppData\Local\Programs\Microsoft VS Code\bin
+2025-04-14 21:25:30,896 - INFO - VSCode 실행
+2025-04-14 21:42:27,806 - INFO - 사용자 선택: 7
+2025-04-14 21:42:27,806 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 21:42:27,950 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 21:42:27,950 - INFO - 연결된 레포지토리 없음
+2025-04-14 21:42:28,966 - INFO - Telegram 메시지 전송: \u26a0\ufe0f 연결된 레포지토리가 없습니다.
+2025-04-14 21:44:16,362 - INFO - 사용자 선택: 3
+2025-04-14 21:44:16,538 - ERROR - 잘못된 레포 접미사: 
+2025-04-14 21:44:17,603 - INFO - Telegram 메시지 전송: \u274c 레포 생성 실패: 숫자만 입력해야 함
+2025-04-14 21:44:19,196 - INFO - 사용자 선택: 3
+2025-04-14 21:44:22,588 - INFO - 레포지토리 생성: autotrading-bot_6
+2025-04-14 21:44:22,715 - ERROR - Git 오류 (Remove origin): 
+2025-04-14 21:44:23,719 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Remove origin) 발생
+
+2025-04-14 21:44:23,862 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 21:44:23,862 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 21:44:23,862 - INFO - 자동 백업 시작
+2025-04-14 21:44:23,909 - INFO - Untracked files 감지됨
+2025-04-14 21:44:50,209 - INFO - 사용자 선택: 7
+2025-04-14 21:44:50,209 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 21:44:50,319 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 21:44:50,319 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 21:44:51,321 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 21:46:03,237 - INFO - 사용자 선택: 1
+2025-04-14 21:46:03,237 - INFO - 자동 백업 시작
+2025-04-14 21:46:03,269 - INFO - Untracked files 감지됨
+2025-04-14 21:50:49,672 - INFO - 변경 사항 확인됨
+2025-04-14 21:50:50,221 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 21:50:50,812 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 21:59:10,429 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 21:59:10,574 - ERROR - Git 오류 (Push): error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_6.git'
+
+2025-04-14 21:59:11,694 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_6.git'
+
+2025-04-14 23:12:04,625 - INFO - 사용자 선택: 7
+2025-04-14 23:12:04,625 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 23:12:04,737 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 23:12:04,737 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 23:12:05,801 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 23:12:07,215 - INFO - 사용자 선택: 1
+2025-04-14 23:12:07,215 - INFO - 자동 백업 시작
+2025-04-14 23:12:07,246 - INFO - Untracked files 감지됨
+2025-04-14 23:12:59,386 - INFO - 변경 사항 확인됨
+2025-04-14 23:12:59,957 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 23:13:00,553 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 23:13:18,570 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 23:24:35,063 - INFO - 사용자 선택: 1
+2025-04-14 23:24:35,063 - INFO - 자동 백업 시작
+2025-04-14 23:24:36,266 - INFO - 변경 사항 확인됨
+2025-04-14 23:24:36,440 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 23:24:37,040 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 23:24:37,303 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 23:26:24,259 - ERROR - Git 오류 (Push): error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+2025-04-14 23:26:25,355 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+2025-04-14 23:32:33,998 - INFO - 사용자 선택: 1
+2025-04-14 23:32:33,998 - INFO - 자동 백업 시작
+2025-04-14 23:32:34,812 - INFO - 커밋할 변경 사항 없음
+2025-04-14 23:32:35,922 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-14 23:34:01,812 - INFO - 사용자 선택: 7
+2025-04-14 23:34:01,828 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-14 23:34:01,922 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-14 23:34:01,922 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 23:34:02,990 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-14 23:42:52,694 - INFO - 사용자 선택: 1
+2025-04-14 23:42:52,694 - INFO - 자동 백업 시작
+2025-04-14 23:42:53,608 - INFO - 변경 사항 확인됨
+2025-04-14 23:42:53,795 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-14 23:42:54,416 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-14 23:42:54,688 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-14 23:44:40,775 - ERROR - Git 오류 (Push): error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+2025-04-14 23:44:41,779 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+2025-04-15 00:04:34,639 - INFO - 사용자 선택: 1
+2025-04-15 00:04:34,639 - INFO - 자동 백업 시작
+2025-04-15 00:04:35,510 - INFO - 변경 사항 확인됨
+2025-04-15 00:04:35,684 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-15 00:04:36,318 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-15 00:04:36,571 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-15 00:06:22,507 - ERROR - Git 오류 (Push): error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+2025-04-15 00:06:23,526 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date
+
+2025-04-15 00:18:25,388 - INFO - 사용자 선택: 1
+2025-04-15 00:18:25,389 - INFO - 자동 백업 시작
+2025-04-15 00:18:25,425 - INFO - Untracked files 감지됨
+2025-04-15 00:18:26,888 - INFO - 변경 사항 확인됨
+2025-04-15 00:18:26,983 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-15 00:18:27,099 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-15 00:18:27,341 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-15 00:18:27,475 - ERROR - Git 오류 (Push): fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+2025-04-15 00:18:28,446 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+2025-04-15 00:18:33,932 - INFO - 사용자 선택: 7
+2025-04-15 00:18:33,932 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-15 00:18:34,028 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-15 00:18:34,028 - INFO - 연결된 레포지토리 없음
+2025-04-15 00:18:34,997 - INFO - Telegram 메시지 전송: \u26a0\ufe0f 연결된 레포지토리가 없습니다.
+2025-04-15 00:18:38,277 - INFO - 사용자 선택: 4
+2025-04-15 00:18:40,187 - ERROR - Git 오류 (Remove origin): 
+2025-04-15 00:18:41,219 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Remove origin) 발생
+
+2025-04-15 00:18:41,321 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-15 00:18:41,321 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-15 00:18:41,321 - INFO - 자동 백업 시작
+2025-04-15 00:18:41,432 - INFO - 변경 사항 확인됨
+2025-04-15 00:18:41,512 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-15 00:18:41,640 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-15 00:18:41,750 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-15 00:18:47,065 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 OpenAI API Key \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:1        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ypWExHNMSPF9KcvPYI7O0Wb        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:10        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ysKjlsQg1qougp0Lv8fXFje        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_6.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_6.git'
+
+2025-04-15 00:18:48,069 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 OpenAI API Key \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:1        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ypWExHNMSPF9KcvPYI7O0Wb        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:10        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ysKjlsQg1qougp0Lv8fXFje        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_6.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_6.git'
+
+2025-04-15 00:18:49,200 - INFO - 사용자 선택: 1
+2025-04-15 00:18:49,200 - INFO - 자동 백업 시작
+2025-04-15 00:18:49,311 - INFO - 변경 사항 확인됨
+2025-04-15 00:18:49,407 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-15 00:18:49,517 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-15 00:18:49,628 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-15 00:18:55,773 - ERROR - Git 오류 (Push): remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 OpenAI API Key \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:1        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ypWExHNMSPF9KcvPYI7O0Wb        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:10        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ysKjlsQg1qougp0Lv8fXFje        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_6.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_6.git'
+
+2025-04-15 00:18:56,761 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: error: GH013: Repository rule violations found for refs/heads/main.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:             
+remote:             
+remote:       \u2014\u2014 OpenAI API Key \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:1        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ypWExHNMSPF9KcvPYI7O0Wb        
+remote:             
+remote:             
+remote:       \u2014\u2014 GitHub Personal Access Token \u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014        
+remote:        locations:        
+remote:          - commit: 06822568808794c220d152363e155a0fa913aa6a        
+remote:            path: .env:10        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/reset980reset980/autotrading-bot_6/security/secret-scanning/unblock-secret/2vj1ysKjlsQg1qougp0Lv8fXFje        
+remote:             
+remote: 
+remote: 
+To https://github.com/reset980reset980/autotrading-bot_6.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/reset980reset980/autotrading-bot_6.git'
+
+2025-04-15 00:41:33,113 - INFO - 사용자 선택: 7
+2025-04-15 00:41:33,113 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-15 00:41:33,224 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-15 00:41:33,224 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-15 00:41:34,275 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_6.git
+2025-04-15 00:41:37,544 - INFO - 사용자 선택: 4
+2025-04-15 00:41:39,369 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-15 00:41:39,466 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-15 00:41:39,466 - INFO - 원격 저장소 설정: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-15 00:41:39,466 - INFO - 자동 백업 시작
+2025-04-15 00:41:39,593 - INFO - 커밋할 변경 사항 없음
+2025-04-15 00:41:40,643 - INFO - Telegram 메시지 전송: \u2139\ufe0f 백업: 커밋할 변경 사항이 없습니다.
+2025-04-15 01:05:22,931 - INFO - 사용자 선택: 7
+2025-04-15 01:05:22,931 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-15 01:05:23,038 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-15 01:05:23,038 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-15 01:05:24,141 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git

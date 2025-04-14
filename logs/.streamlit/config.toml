@@ -1,0 +1,6 @@
+# .streamlit/config.toml
+# ✅ Streamlit 기본 레이아웃 및 실행 구성
+[server]
+headless = true
+port = 8501
+enableCORS = false

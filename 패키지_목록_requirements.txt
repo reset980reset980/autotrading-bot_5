@@ -1,0 +1,12 @@
+# requirements.txt
+# ✅ 실행을 위한 필수 패키지 목록
+
+streamlit==1.44.1
+pandas==2.2.3
+python-dotenv==1.1.0
+requests==2.32.3
+openai==1.71.0
+ccxt==4.4.73
+gnews==0.4.1
+newsapi-python==0.2.7
+beautifulsoup4==4.13.3

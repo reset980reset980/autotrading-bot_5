@@ -1,0 +1,56 @@
+[2025-04-09 18:42:18.44] ?“¥ GitHub?ì„œ ìµœì‹  ì½”ë“œ ê°€?¸ì˜¤??ì¤?.. 
+From https://github.com/reset980reset980/autotrading-bot
+ * branch            main       -> FETCH_HEAD
+   f7cd6ca..6142c9d  main       -> origin/main
+error: Your local changes to the following files would be overwritten by merge:
+	requirements.txt
+Please commit your changes or stash them before you merge.
+Updating f7cd6ca..6142c9d
+Aborting
+[2025-04-09 18:42:20.53] ???…ë°?´íŠ¸ ?¤íŒ¨ 
+[2025-04-09 18:44:02.79] ?”„ GitHub?ì„œ ìµœì‹  ì½”ë“œ ê°€?¸ì˜¤??ì¤?.. 
+From https://github.com/reset980reset980/autotrading-bot
+ * branch            main       -> FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+	requirements.txt
+Please commit your changes or stash them before you merge.
+Updating f7cd6ca..6142c9d
+Aborting
+[2025-04-09 18:44:04.43] ???„ë£Œ 
+[2025-04-09 18:47:23.96] ?”„ GitHub?ì„œ ìµœì‹  ì½”ë“œ ê°€?¸ì˜¤??ì¤?.. 
+From https://github.com/reset980reset980/autotrading-bot
+ * branch            main       -> FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+	requirements.txt
+Please commit your changes or stash them before you merge.
+Updating f7cd6ca..6142c9d
+Aborting
+[2025-04-09 18:47:25.61] ???„ë£Œ 
+[2025-04-09 18:50:41.35] ?”„ GitHub?ì„œ ìµœì‹  ì½”ë“œ ê°€?¸ì˜¤??ì¤?.. 
+From https://github.com/reset980reset980/autotrading-bot
+ * branch            main       -> FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+	requirements.txt
+Please commit your changes or stash them before you merge.
+Updating f7cd6ca..6142c9d
+Aborting
+[2025-04-09 18:50:42.79] ???„ë£Œ 
+[2025-04-09 18:53:17.83] ?”„ GitHub?ì„œ ìµœì‹  ì½”ë“œ ê°€?¸ì˜¤??ì¤?.. 
+From https://github.com/reset980reset980/autotrading-bot
+ * branch            main       -> FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+	requirements.txt
+Please commit your changes or stash them before you merge.
+Updating f7cd6ca..6142c9d
+Aborting
+[2025-04-09 18:53:19.33] ???„ë£Œ 
+[2025-04-09 21:54:04.99] ?”„ GitHub?ì„œ ìµœì‹  ì½”ë“œ ê°€?¸ì˜¤??ì¤?.. 
+From https://github.com/reset980reset980/autotrading-bot
+ * branch            main       -> FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+	auto_trader.py
+	requirements.txt
+Please commit your changes or stash them before you merge.
+Updating f7cd6ca..6142c9d
+Aborting
+[2025-04-09 21:54:06.80] ???„ë£Œ 
