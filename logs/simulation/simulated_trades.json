@@ -1,7 +1,17 @@
 [
   {
     "signal": "long",
-    "tp": 1.5,
-    "sl": 0.7,
+    "tp": 2.5,
+    "sl": 1.0,
     "ai_prediction": 84088.18630164028,
-    "rsi": 
+    "rsi": 68.55,
+    "ema": 84164.20,
+    "tema": 84132.06,
+    "macd": -66.96,
+    "bb": "중단",
+    "divergence": "없음",
+    "sentiment_score": -0.54,
+    "profit": 0.0,
+    "timestamp": "2025-04-14T02:11:59"
+  }
+]

@@ -997,3 +997,11 @@ error: failed to push some refs to 'https://github.com/reset980reset980/autotrad
 2025-04-15 01:05:23,038 - INFO - Git 명령 성공 (Check remote): git remote -v
 2025-04-15 01:05:23,038 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
 2025-04-15 01:05:24,141 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-15 07:41:43,542 - INFO - 사용자 선택: 7
+2025-04-15 07:41:43,542 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-15 07:41:43,653 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-15 07:41:43,653 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-15 07:41:44,673 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-15 07:41:48,893 - INFO - 사용자 선택: 1
+2025-04-15 07:41:48,893 - INFO - 자동 백업 시작
+2025-04-15 07:41:48,941 - INFO - Untracked files 감지됨
