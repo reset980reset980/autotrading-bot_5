@@ -1026,3 +1026,14 @@ error: failed to push some refs to 'https://github.com/reset980reset980/autotrad
 2025-04-16 00:07:13,229 - INFO - 원격 저장소 설정: https://github.com/AIAUTOBARGAIN/autotrading-bot_5.git
 2025-04-16 00:07:13,229 - INFO - 자동 백업 시작
 2025-04-16 00:07:13,321 - INFO - Untracked files 감지됨
+2025-04-16 00:07:25,778 - INFO - 변경 사항 확인됨
+2025-04-16 00:07:25,896 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-16 00:07:26,223 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-16 00:07:37,792 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-16 00:07:38,766 - ERROR - Git 오류 (Push): remote: Repository not found.
+fatal: repository 'https://github.com/AIAUTOBARGAIN/autotrading-bot_5.git/' not found
+
+2025-04-16 00:07:39,801 - INFO - Telegram 메시지 전송: \u274c Git 오류 (Push) 발생
+remote: Repository not found.
+fatal: repository 'https://github.com/AIAUTOBARGAIN/autotrading-bot_5.git/' not found
+
