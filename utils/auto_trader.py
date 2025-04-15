@@ -1,4 +1,4 @@
-# utils/auto_trader_g.py
+# utils/auto_trader.py
 import json
 import os
 from datetime import datetime
@@ -17,6 +17,20 @@ def load_trade_log():
         except (json.JSONDecodeError, ValueError):
             print("거래 로그 파일이 손상되었습니다. 새 로그 파일을 생성합니다.")
             return []
+
+# 기존 전략 판단
+strategy_result = run_strategy()
+print("📊 전략 판단 결과:", strategy_result)
+
+
+# ✅ 여기에 자동 분기 매매 실행 추가
+from modules.exchange_router import route_trade
+trade_result = route_trade(strategy_result)
+print("🚀 매매 실행 결과:", trade_result)
+
+# 이후 기존의 로그 저장 등 유지
+log_result(trade_result)
+
 
 def simulate_trade(signal: str, price: float, tp: float, sl: float):
     if signal == "long":

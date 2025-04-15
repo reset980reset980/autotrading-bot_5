@@ -1,0 +1,7 @@
+{
+    "epochs": 30,
+    "batch_size": 32,
+    "model_save_path": "models/model_v1.h5",
+    "scaler_path": "models/scaler.pkl"
+  }
+  

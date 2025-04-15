@@ -1005,3 +1005,24 @@ error: failed to push some refs to 'https://github.com/reset980reset980/autotrad
 2025-04-15 07:41:48,893 - INFO - 사용자 선택: 1
 2025-04-15 07:41:48,893 - INFO - 자동 백업 시작
 2025-04-15 07:41:48,941 - INFO - Untracked files 감지됨
+2025-04-15 07:42:38,711 - INFO - 변경 사항 확인됨
+2025-04-15 07:42:38,924 - INFO - Git 명령 성공 (Remove .zip): git rm --cached --ignore-unmatch *.zip > nul 2>&1
+2025-04-15 07:42:39,219 - INFO - Git 명령 성공 (Add files): git add .
+2025-04-15 07:43:08,994 - INFO - Git 명령 성공 (Commit): git commit -m "\U0001f195 자동 커밋: 최신 변경사항 백업"
+2025-04-15 07:43:20,838 - INFO - Git 명령 성공 (Push): git push --set-upstream origin main
+2025-04-15 07:43:20,839 - INFO - 자동 백업 완료
+2025-04-15 07:43:21,803 - INFO - Telegram 메시지 전송: \u2705 Git 자동 백업 완료되었습니다.
+2025-04-15 07:43:30,547 - INFO - 사용자 선택: 9
+2025-04-15 07:43:30,547 - INFO - 프로그램 종료
+2025-04-15 22:45:41,024 - INFO - 사용자 선택: 7
+2025-04-15 22:45:41,026 - INFO - 현재 연결된 레포지토리 확인 시작
+2025-04-15 22:45:41,138 - INFO - Git 명령 성공 (Check remote): git remote -v
+2025-04-15 22:45:41,139 - INFO - 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-15 22:45:42,213 - INFO - Telegram 메시지 전송: \U0001f50d 현재 연결된 레포지토리: https://github.com/reset980reset980/autotrading-bot_4.git
+2025-04-16 00:07:02,283 - INFO - 사용자 선택: 3
+2025-04-16 00:07:13,020 - INFO - 레포지토리 생성: autotrading-bot_5
+2025-04-16 00:07:13,131 - INFO - Git 명령 성공 (Remove origin): git remote remove origin > nul 2>&1
+2025-04-16 00:07:13,229 - INFO - Git 명령 성공 (Add origin): git remote add origin https://github.com/AIAUTOBARGAIN/autotrading-bot_5.git
+2025-04-16 00:07:13,229 - INFO - 원격 저장소 설정: https://github.com/AIAUTOBARGAIN/autotrading-bot_5.git
+2025-04-16 00:07:13,229 - INFO - 자동 백업 시작
+2025-04-16 00:07:13,321 - INFO - Untracked files 감지됨

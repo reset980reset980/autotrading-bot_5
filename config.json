@@ -1,32 +1,17 @@
 {
-    "mode": "auto",
-    "real_trade_threshold": 0.9,
-    "testnet_threshold": 0.75,
-  
-    "bitget": {
-      "api_key": "bg_685952997e02514ad7afc7ac3a636f28",
-      "api_secret": "YOUR_BITGET_API_SECRET",
-      "passphrase": "symphony99"
-    },
-    "bybit": {
-      "api_key": "wTw0q9r2Wn9opbjiUB",
-      "api_secret": "L6baxxiFossZziZMcH5gmq6YTFCyckFYgpSL",
-      "base_url": "https://api-testnet.bybit.com"
-    },
-  
-    "use_ai_sl_tp": "yes",
-    "stop_loss_percentage": 0.5,
-    "take_profit_percentage": 1.0,
-    "risk_percentage": 1.0,
-    "dynamic_leverage": "yes",
-    "leverage": 5,
-    "symbols": [
-      "BTC/USDT",
-      "ETH/USDT",
-      "XRP/USDT"
-    ],
-    "timeframe": "15m",
-    "use_ai_feedback": "yes",
-    "log_level": "INFO"
-  }
-  
+  "use_ai_sl_tp": "yes",             // AI 기반 손절/익절 범위 사용 여부
+  "stop_loss_percentage": 0.5,       // 기본 손절 퍼센트
+  "take_profit_percentage": 1.0,     // 기본 익절 퍼센트
+  "risk_percentage": 1.0,            // 포지션 진입 시 계좌의 리스크 비율
+  "dynamic_leverage": "yes",         // AI에 따라 레버리지 동적 조정 여부
+  "leverage": 5,                     // 기본 고정 레버리지
+  "symbols": [
+    "BTC/USDT",
+    "ETH/USDT",
+    "XRP/USDT"
+  ],
+  "timeframe": "15m",                // 분석 타임프레임
+  "use_ai_feedback": "yes",         // AI 피드백 판단 기능 활성화 여부
+  "trade_mode": "simulator",        // 거래 모드: simulator / bybit_testnet / real
+  "log_level": "INFO"               // 로그 상세도: DEBUG / INFO / WARNING / ERROR
+}

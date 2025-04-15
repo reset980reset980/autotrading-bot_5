@@ -17,3 +17,4 @@
 [2025-04-15 06:35:07] 전략: hold | TP: 0.0% | SL: 0.0% | RSI: 28.5 | 감정: 0.35 | 결과: {'mode': 'simulator', 'balance': 1170000.0, 'pnl': -10000.0, 'result': '❌ LOSS'}
 [2025-04-15 06:50:07] 전략: hold | TP: 0.0% | SL: 0.0% | RSI: 28.5 | 감정: 0.35 | 결과: {'mode': 'simulator', 'balance': 1180000.0, 'pnl': -10000.0, 'result': '❌ LOSS'}
 [2025-04-15 07:05:07] 전략: hold | TP: 0.0% | SL: 0.0% | RSI: 28.5 | 감정: 0.35 | 결과: {'mode': 'simulator', 'balance': 1190000.0, 'pnl': -10000.0, 'result': '❌ LOSS'}
+[2025-04-15 07:44:37] 전략: hold | TP: 0.0% | SL: 0.0% | RSI: 28.5 | 감정: 0.35 | 결과: {'mode': 'simulator', 'result': '⏸️ HOLD - No Trade'}
