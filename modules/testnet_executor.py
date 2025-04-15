@@ -10,38 +10,36 @@
   ▶ "매수/매도 시그널을 받아 Bybit 테스트넷에 시장가 거래를 실행하는 함수를 구성하라."
 """
 
-import os
-from pybit.unified_trading import HTTP
-from dotenv import load_dotenv
+def execute_bybit_test_trade(symbol: str, side: str, entry_price: float, take_profit: float, stop_loss: float):
+    import ccxt
+    import os
+    from dotenv import load_dotenv
 
-load_dotenv()
+    load_dotenv()
+    bybit = ccxt.bybit({
+        "apiKey": os.getenv("BYBIT_API_KEY_TESTNET"),
+        "secret": os.getenv("BYBIT_SECRET_TESTNET"),
+        "enableRateLimit": True,
+        "options": {"defaultType": "future"},
+    })
+    bybit.set_sandbox_mode(True)
 
-# ✅ 테스트넷 전용 API 키
-API_KEY = os.getenv("BYBIT_API_KEY_TEST")
-API_SECRET = os.getenv("BYBIT_API_SECRET_TEST")
+    print(f"🛠️ Bybit 테스트넷 주문 실행 중: {side.upper()}")
 
-session = HTTP(
-    testnet=True,
-    api_key=API_KEY,
-    api_secret=API_SECRET
-)
-
-def execute_bybit_testnet_trade(signal: str, entry_price: float, tp: float, sl: float):
-    """
-    Bybit 테스트넷에서 시장가 주문 실행
-    """
-    symbol = "BTCUSDT"
-    qty = 0.01
-    side = "Buy" if signal == "long" else "Sell"
+    # 주문 수량은 최소 단위로 설정 (BTC 기준 0.01)
+    amount = 0.01
 
     try:
-        response = session.place_order(
-            category="linear",
+        order = bybit.create_order(
             symbol=symbol,
+            type="market",
             side=side,
-            order_type="Market",
-            qty=qty
+            amount=amount,
+            params={
+                "takeProfit": round(entry_price * (1 + take_profit / 100), 2) if side == "long" else round(entry_price * (1 - take_profit / 100), 2),
+                "stopLoss": round(entry_price * (1 - stop_loss / 100), 2) if side == "long" else round(entry_price * (1 + stop_loss / 100), 2),
+            }
         )
-        return {"mode": "bybit_testnet", "response": response}
+        print(f"✅ 테스트넷 주문 성공: {order['id']}")
     except Exception as e:
-        return {"mode": "bybit_testnet", "error": str(e)}
+        print(f"❌ 테스트넷 주문 실패: {e}")

@@ -12,7 +12,7 @@
 
 import json
 import os
-from modules.testnet_executor import execute_bybit_testnet_trade
+from modules.testnet_executor import execute_bybit_test_trade  # ✅ 존재하는 함수
 from utils.simulator import execute_simulated_trade
 
 def route_trade(strategy_result: dict):
@@ -40,7 +40,7 @@ def route_trade(strategy_result: dict):
     if mode == "simulator":
         return execute_simulated_trade(signal, entry_price, tp, sl)
     elif mode == "bybit_testnet":
-        return execute_bybit_testnet_trade(signal, entry_price, tp, sl)
+        return execute_bybit_test_trade(signal, entry_price, tp, sl)
     else:
         print(f"⚠️ 알 수 없는 거래 모드: {mode}")
         return {"mode": "error", "result": "Unknown mode"}

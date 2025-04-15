@@ -23,6 +23,12 @@ def load_config(path: str = "config.json") -> dict:
         print(f"⚠️ 설정 파일 로딩 실패: {e}")
         return {}
 
+def get_config(key: str, default=None):
+    import json
+    with open("config.json", "r", encoding="utf-8") as f:
+        config = json.load(f)
+    return config.get(key, default)
+
 def load_env(env_path: str = ".env"):
     """
     🔐 .env 파일에서 API 키, 비밀키, 토큰 등 불러오기

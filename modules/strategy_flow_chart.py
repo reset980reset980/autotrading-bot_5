@@ -1,49 +1,63 @@
 # 📁 파일명: modules/strategy_flow_chart.py
-# 🎯 목적: 전략 판단 과정에서의 signal, sentiment, 기술 지표 흐름을 시계열 그래프로 시각화
-# 🧭 전체 흐름도:
-#     - 시뮬레이션 또는 실매매 결과를 시간순으로 불러옴
-#     - signal 변화, sentiment 점수, RSI 등 지표들을 선 그래프로 시각화
-# 📈 주요 함수:
-#     - load_trade_logs(): 최근 거래 데이터 로드
-#     - plot_strategy_flow(): 판단 흐름 그래프 출력
-# 📍 프롬프트 요약:
-#     ▶ "시간 흐름에 따른 전략 방향, 감정 점수, RSI 등을 시각적으로 표시하여 흐름을 확인할 수 있게 구성하라."
+# 🎯 목적: 전략 판단 결과를 시각적인 흐름도로 표시하여 사용자 이해를 돕는다.
+# 📦 의존성: matplotlib
+# 📚 주요 함수:
+#     - draw_strategy_flow(): RSI, MACD, 감정 점수 등 기반 판단 흐름 표시
+# 💬 프롬프트 요약:
+#     ▶ "AI 전략 결과를 기반으로 한 시각적 전략 흐름도 그래프를 그려라."
 
-import json
 import matplotlib.pyplot as plt
-import pandas as pd
-from datetime import datetime
+from matplotlib import rcParams
 
-def load_trade_logs(filepath="logs/simulation/simulated_trades.json", limit=50):
-    with open(filepath, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return pd.DataFrame(data[-limit:])  # 최근 50개만
+# ✅ Windows 기준 나눔고딕 또는 맑은 고딕 적용
+plt.rcParams['font.family'] = 'Malgun Gothic'  # 또는 'NanumGothic'
+rcParams['axes.unicode_minus'] = False  # 마이너스 깨짐 방지
 
-def plot_strategy_flow(df: pd.DataFrame):
-    df["time"] = pd.to_datetime(df["timestamp"] if "timestamp" in df else df["time"])
-    df = df.sort_values("time")
+def draw_strategy_flow(signal: str, indicators: dict):
+    """
+    전략 흐름도 시각화 함수
 
-    # 전략 방향 수치화
-    df["signal_num"] = df["signal"].map({"long": 1, "hold": 0, "short": -1})
+    Parameters:
+        signal (str): 'long', 'short', 'hold' 중 하나
+        indicators (dict): rsi, macd, sentiment, bb 등 포함된 딕셔너리
+    """
 
-    plt.figure(figsize=(12, 6))
-    plt.plot(df["time"], df["signal_num"], marker='o', label="Signal (long=1, short=-1)")
-    plt.plot(df["time"], df["sentiment"], label="Sentiment Score", linestyle="--")
-    plt.plot(df["time"], df["rsi"], label="RSI", linestyle=":")
+    # 흐름 단계 및 조건 요약
+    stages = [
+        "RSI 분석",
+        "MACD 분석",
+        "감정 분석",
+        "BB 위치 분석",
+        "AI 전략 판단"
+    ]
+    
+    reasons = [
+        f"RSI: {indicators.get('rsi', '-')}",
+        f"MACD: {indicators.get('macd', '-')}",
+        f"Sentiment: {indicators.get('sentiment', '-')}",
+        f"BB 위치: {indicators.get('bb', '-')}",
+        f"결과: {signal.upper()}"
+    ]
+    
+    colors = {
+        "long": "green",
+        "short": "red",
+        "hold": "gray"
+    }
 
-    plt.axhline(0, color="gray", linestyle="--", linewidth=0.5)
-    plt.axhline(70, color="red", linestyle="--", linewidth=0.5)
-    plt.axhline(30, color="blue", linestyle="--", linewidth=0.5)
+    fig, ax = plt.subplots(figsize=(8, 5))
+    y = list(range(len(stages)))[::-1]
 
-    plt.legend()
-    plt.title("전략 판단 흐름 차트")
-    plt.xlabel("시간")
-    plt.ylabel("지표 값")
+    for i, (stage, reason) in enumerate(zip(stages, reasons)):
+        ax.plot([0, 1], [y[i], y[i]], color='black')
+        ax.text(0, y[i], stage, ha='right', va='center', fontsize=10, fontweight='bold')
+        ax.text(1, y[i], reason, ha='left', va='center', fontsize=10)
+
+    # 최종 전략 강조
+    ax.scatter([1.2], [y[-1]], s=150, color=colors.get(signal, 'gray'), label=f"전략: {signal.upper()}")
+    ax.legend(loc='upper center')
+    
+    ax.axis('off')
+    plt.title("🧭 전략 판단 흐름도", fontsize=13)
     plt.tight_layout()
-    plt.grid(True)
     plt.show()
-
-# ✅ 단독 실행 예시
-if __name__ == "__main__":
-    df = load_trade_logs()
-    plot_strategy_flow(df)

@@ -5,7 +5,7 @@
     "sl": 1.0,
     "ai_prediction": 84088.18630164028,
     "rsi": 68.55,
-    "ema": 84164.20,
+    "ema": 84164.2,
     "tema": 84132.06,
     "macd": -66.96,
     "bb": "중단",
@@ -13,5 +13,20 @@
     "sentiment_score": -0.54,
     "profit": 0.0,
     "timestamp": "2025-04-14T02:11:59"
+  },
+  {
+    "signal": "short",
+    "tp": 1.5,
+    "sl": 0.5,
+    "entry_price": 27000,
+    "profit": -270.0
+  },
+  {
+    "signal": "long",
+    "tp": 0.0,
+    "sl": 0.0,
+    "entry_price": 28235.517006087575,
+    "result": "❌ LOSS",
+    "profit": 0.0
   }
 ]

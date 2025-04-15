@@ -1,127 +1,163 @@
 # 📁 파일명: utils/strategy_analyzer.py
-"""
-📌 목적: 전략 판단 (AI 응답 + 기술 지표 + 감정 점수 기반)
-📌 기능:
-  - run_strategy(): 전략 판단 실행
-  - analyze_strategy(): AI 응답 및 지표 조합으로 TP/SL 계산
-  - get_strategy_summary(): 판단 결과 요약 반환
-📌 작업 프롬프트 요약:
-  ▶ "Grok 응답과 기술적 지표, 감정 분석을 통합해 전략을 판단하고, TP/SL을 함께 제공하라."
-"""
+# 🎯 목적: 전략 판단 시스템의 핵심 모듈 (Grok + 보완 + 딥러닝 + 커뮤니티 반영)
+# 🔄 전체 흐름도:
+#   1. AI(Grok) 응답 기반 전략 해석
+#   2. HOLD일 경우 상위 프레임 및 감정 기반 보완 전략 적용
+#   3. 딥러닝 예측 결과 보조 반영
+#   4. 커뮤니티 반응 기반 추가 필터링
+# 📚 포함 함수:
+#   - analyze_strategy()
+#   - analyze_strategy_with_context()
+#   - apply_model_correction()
+#   - apply_community_adjustment()
+# 💬 작업 프롬프트 요약:
+#   ▶ "전략 판단 시, AI 응답 + 보완 판단 + 딥러닝 예측 + 커뮤니티 반응까지 종합적으로 판단하라."
 
 from utils.indicators import get_indicators
-from utils.sentiment import analyze_news
 from modules.grok_bridge import query_grok
-from utils.strategy_logic import analyze_strategy
-from modules.ai_model import query_grok
+from models.model_predictor import predict_with_model  # ✅ 딥러닝 예측 결과 가져오기
+from modules.community_sentiment import analyze_community_sentiment  # ✅ 커뮤니티 반응 분석 모듈
 
-def refine_signal_from_response(grok_response: str) -> str:
+def analyze_community_sentiment() -> float:
     """
-    AI 응답에서 전략 신호를 명확하게 결정
-    - long과 short가 함께 있어도, 추천 강도나 표현을 분석하여 방향 판단
+    커뮤니티 감정 분석 결과를 반환합니다.
+    현재는 임시로 고정 점수를 반환합니다.
+    추후에는 실제 트위터/X 등에서 데이터를 수집해 분석하도록 확장 가능합니다.
     """
-    lower = grok_response.lower()
+    # TODO: 실제 커뮤니티 분석 로직으로 대체
+    return 0.1  # 예시: 약간 긍정적
 
-    if "recommendation: short" in lower:
-        return "short"
-    if "recommendation: long" in lower:
-        return "long"
-
-    if "short seems more aligned" in lower:
-        return "short"
-    if "long seems more aligned" in lower:
-        return "long"
-    if "consider a short" in lower:
-        return "short"
-    if "consider a long" in lower:
-        return "long"
-
-    if "go short" in lower:
-        return "short"
-    if "go long" in lower:
-        return "long"
-
-    if "hold" in lower:
-        return "hold"
-
-    return "hold"
-
-
-def analyze_strategy(grok_response: str, indicators: dict, sentiment_score: float):
+def analyze_strategy(ai_response, indicators, sentiment_score):
     """
-    Grok 응답 기반으로 전략을 분석하여 signal, tp, sl 반환
+    Grok 응답으로부터 전략 판단 및 수치(TP/SL) 추출
     """
-    signal = refine_signal_from_response(grok_response)
+    try:
+        lines = ai_response.splitlines()
+        signal = "hold"
+        tp = 0.0
+        sl = 0.0
 
-    # 기본값
-    tp = 1.2 if signal != "hold" else 0.0
-    sl = 0.6 if signal != "hold" else 0.0
+        for line in lines:
+            if "LONG" in line:
+                signal = "long"
+            elif "SHORT" in line:
+                signal = "short"
+            elif "HOLD" in line:
+                signal = "hold"
+            elif "익절" in line or "Take Profit" in line:
+                try:
+                    tp = float(''.join(c for c in line if c.isdigit() or c == '.'))
+                except:
+                    tp = 0.0
+            elif "손절" in line or "Stop Loss" in line:
+                try:
+                    sl = float(''.join(c for c in line if c.isdigit() or c == '.'))
+                except:
+                    sl = 0.0
 
-    # 전략 요약 정보
-    bb_location = indicators.get("bb", "중앙")
-    divergence = indicators.get("divergence", "없음")
-    summary = []
+        return {
+            "signal": signal,
+            "tp": tp if signal != "hold" else 0.0,
+            "sl": sl if signal != "hold" else 0.0,
+            "entry_price": indicators.get("close", 0)
+        }, {
+            "rsi": indicators.get("rsi"),
+            "bb": indicators.get("bb"),
+            "ema": indicators.get("ema"),
+            "tema": indicators.get("tema"),
+            "macd": indicators.get("macd"),
+            "sentiment": sentiment_score,
+            "summary": f"RSI: {indicators['rsi']}, BB 위치: {indicators['bb']}, 감정: {sentiment_score}, 다이버전스: {indicators.get('divergence', '없음')}"
+        }
 
-    if indicators["rsi"] < 20:
-        summary.append("과매도 (RSI < 20)")
-    elif indicators["rsi"] > 80:
-        summary.append("과매수 (RSI > 80)")
-    else:
-        summary.append("RSI 중립")
+    except Exception as e:
+        print(f"⚠️ 전략 분석 실패: {e}")
+        return {
+            "signal": "hold", "tp": 0.0, "sl": 0.0, "entry_price": 0.0
+        }, {
+            "summary": "전략 분석 실패", "sentiment": sentiment_score
+        }
 
-    summary.append(f"BB 위치: {bb_location}")
-    summary.append("감정 긍정" if sentiment_score > 0.3 else "감정 부정" if sentiment_score < -0.3 else "감정 혼조")
-    summary.append(f"다이버전스: {divergence}")
 
-    return {
-        "signal": signal,
-        "tp": tp,
-        "sl": sl,
-        "entry_price": indicators.get("close", 0)
-    }, {
-        "rsi": indicators["rsi"],
-        "bb": bb_location,
-        "ema": indicators.get("ema", 0),
-        "tema": indicators.get("tema", 0),
-        "macd": indicators.get("macd", 0),
-        "sentiment": sentiment_score,
-        "summary": ", ".join(summary)
-    }
-
-def run_strategy():
+def analyze_strategy_with_context(sentiment_score: float, base_interval="15m") -> dict:
     """
-    전체 전략 실행: Grok 호출 + 실패 시 보조 전략 판단
+    HOLD 응답 시 → 상위프레임 기반 보완 전략 판단
     """
-    indicators = get_indicators("BTC/USDT", "15m")
-    news_list = analyze_news()
-    sentiment_score = analyze_news(news_list)
+    indicators_base = get_indicators("BTC/USDT", base_interval)
+    indicators_1h = get_indicators("BTC/USDT", "1h")
+    indicators_4h = get_indicators("BTC/USDT", "4h")
 
     prompt = f"""
     Technical Indicators:
-    RSI: {indicators['rsi']}, BB: {indicators['bb']}, EMA: {indicators['ema']}, TEMA: {indicators['tema']}, MACD: {indicators['macd']}
+    RSI: {indicators_base['rsi']}, BB: {indicators_base['bb']},
+    EMA: {indicators_base['ema']}, TEMA: {indicators_base['tema']},
+    MACD: {indicators_base['macd']}
     Market Sentiment: {sentiment_score}
     Based on the above, should we go LONG, SHORT, or HOLD?
     """
 
-    # 🔁 Grok 호출 + 1회 재시도
-    ai_response = query_grok(prompt)
-    if ai_response.strip().lower() in ["", "timeout", "error"]:
+    try:
+        ai_response = query_grok(prompt).strip().upper()
+    except Exception as e:
+        print(f"⚠️ Grok 호출 실패 (보완 전략): {e}")
         ai_response = "HOLD"
 
-    core, summary = analyze_strategy(ai_response, indicators, sentiment_score)
+    signal = "hold"
+    if ai_response in ["LONG", "SHORT"]:
+        short_term_signal = ai_response.lower()
+        higher_trend = indicators_1h.get("macd", 0) > 0 and indicators_4h.get("macd", 0) > 0
+        lower_trend = indicators_1h.get("macd", 0) < 0 and indicators_4h.get("macd", 0) < 0
 
-    # ✅ HOLD일 경우 보조 전략 판단 적용
-    if core["signal"] == "hold":
-        rsi = indicators["rsi"]
-        bb = indicators["bb"]
-        macd = indicators["macd"]
-        if rsi > 70 and bb == "상단" and sentiment_score < -0.2:
-            core["signal"] = "short"
-            core["tp"] = 1.0
-            core["sl"] = 0.5
-        elif rsi < 30 and bb == "하단" and sentiment_score > 0.2:
-            core["signal"] = "long"
-            core["tp"] = 1.2
-            core["sl"] = 0.6
+        if (short_term_signal == "long" and higher_trend) or (short_term_signal == "short" and lower_trend):
+            signal = short_term_signal
+        else:
+            macd_strength = abs(indicators_base.get("macd", 0))
+            if macd_strength > 30 or abs(sentiment_score) > 0.6:
+                signal = short_term_signal
+            else:
+                signal = "hold"
 
-    return {**core, **summary}
+    return {
+        "signal": signal,
+        "tp": 1.5 if signal != "hold" else 0.0,
+        "sl": 0.5 if signal != "hold" else 0.0,
+        "entry_price": indicators_base.get("close", 0),
+        "rsi": indicators_base.get("rsi"),
+        "bb": indicators_base.get("bb"),
+        "ema": indicators_base.get("ema"),
+        "tema": indicators_base.get("tema"),
+        "macd": indicators_base.get("macd"),
+        "sentiment": sentiment_score,
+        "summary": f"RSI: {indicators_base['rsi']}, BB 위치: {indicators_base['bb']}, 감정: {sentiment_score}, 다이버전스: {indicators_base.get('divergence', '없음')}"
+    }
+
+from utils.data_cleaner import run_strategy_safe as run_strategy
+from utils.data_cleaner import get_strategy_summary_safe as get_strategy_summary
+
+def apply_model_correction(signal: str, indicators: dict, sentiment_score: float) -> str:
+    """
+    딥러닝 모델 예측 결과를 활용하여 전략 신호 보정
+    """
+    model_pred = predict_with_model(indicators, sentiment_score)  # 예: "long", "short", "hold"
+    if signal == "hold" and model_pred != "hold":
+        print(f"🤖 딥러닝 보완 적용: {signal} → {model_pred}")
+        return model_pred
+    return signal
+
+
+def apply_community_adjustment(signal: str) -> str:
+    """
+    커뮤니티 반응 기반 보완 판단
+    """
+    try:
+        community_sentiment = analyze_community_sentiment()  # -1(부정), 0(중립), 1(긍정)
+        if signal == "long" and community_sentiment == -1:
+            print("👥 커뮤니티 반응: 부정 → LONG → HOLD 전환")
+            return "hold"
+        elif signal == "short" and community_sentiment == 1:
+            print("👥 커뮤니티 반응: 긍정 → SHORT → HOLD 전환")
+            return "hold"
+        return signal
+    except Exception as e:
+        print(f"⚠️ 커뮤니티 분석 실패: {e}")
+        return signal
