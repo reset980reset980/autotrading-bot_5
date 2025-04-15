@@ -18,39 +18,43 @@
 사용 프롬프트 요약:
   ▶ "학습된 모델을 기반으로 최신 입력값에 대한 전략 방향을 예측하라 (확률 기준 long/short/hold 분기 포함)."
 """
-
-import joblib
+import os
 import numpy as np
-import pandas as pd
 from tensorflow.keras.models import load_model
-
 from utils.data_cleaner import preprocess_single_entry
 
-MODEL_PATH = "models/trained_model.h5"
-SCALER_PATH = "models/scaler.pkl"
+# ✅ 모델 경로 (사용자 설정 가능)
+MODEL_PATH = "models/lstm_model.h5"
 
-def predict_strategy(entry: dict) -> str:
+def predict_with_model(entry: dict) -> str:
     """
-    실시간 거래 데이터에 대한 전략 예측
-    :param entry: {"rsi": ..., "macd": ..., ...}
-    :return: "long" | "short" | "hold"
+    딕셔너리 형태의 전략 입력값으로부터 딥러닝 예측 수행
+    entry: {
+        "rsi": 45.0,
+        "macd": -2.1,
+        "ema": 27000,
+        "tema": 27200,
+        "sentiment": 0.2,
+        "community_sentiment": 0.1
+    }
     """
-    # 전처리
-    df = preprocess_single_entry(entry)
-
-    if df is None or df.empty:
+    if not os.path.exists(MODEL_PATH):
+        print("❌ 딥러닝 모델 파일이 존재하지 않습니다.")
         return "hold"
 
-    # 스케일링 및 모델 로드
-    scaler = joblib.load(SCALER_PATH)
-    model = load_model(MODEL_PATH)
+    try:
+        model = load_model(MODEL_PATH)
+        X = preprocess_single_entry(entry)
+        prediction = model.predict(X, verbose=0)
+        idx = int(np.argmax(prediction))
 
-    x_input = scaler.transform(df.values)
-    prob = model.predict(x_input)[0][0]
+        if idx == 0:
+            return "long"
+        elif idx == 1:
+            return "short"
+        else:
+            return "hold"
 
-    if prob > 0.6:
-        return "long"
-    elif prob < 0.4:
-        return "short"
-    else:
+    except Exception as e:
+        print(f"⚠️ 딥러닝 예측 오류: {e}")
         return "hold"

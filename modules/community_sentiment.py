@@ -1,72 +1,93 @@
-# 📁 파일명: modules/community_sentiment.py
-# 🎯 목적: 커뮤니티(X, Reddit 등) 기반 시장 감정 점수 분석 (확장 버전)
-# 📌 주요 기능:
-#     - snscrape 사용해 트위터 데이터 수집
-#     - HuggingFace의 FinBERT 모델로 감정 분석
-#     - 최근 커뮤니티 반응의 평균 감정 점수 반환
-# ⚠️ 사용 전 설치 필요:
-#     pip install snscrape transformers torch
-#     또는 huggingface에서 다른 금융 감정 모델 대체 가능
+# 📁 파일명: modules/community_sentiment_finbert.py
+# 🎯 목적: Reddit 기반 감정 분석에 금융 특화 모델 FinBERT 적용
 
-import snscrape.modules.twitter as sntwitter
-import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import numpy as np
-from typing import List
+import os
+import praw
+import logging
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
-# ✅ FinBERT 모델 로딩 (감정 분석)
-MODEL_NAME = "yiyanghkust/finbert-tone"
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
+# ✅ .env 또는 환경변수에서 Reddit 인증 정보 로드
+REDDIT_CLIENT_ID = os.getenv("REDDIT_CLIENT_ID")
+REDDIT_CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
+REDDIT_USER_AGENT = os.getenv("REDDIT_USER_AGENT", "finbert-sentiment-bot")
 
-def fetch_tweets(keyword: str = "bitcoin", limit: int = 20) -> List[str]:
-    """
-    ▶ 최근 커뮤니티 글(Twitter 기준) 수집
-    Args:
-        keyword (str): 검색 키워드
-        limit (int): 최대 수집 수
-    Returns:
-        List[str]: 텍스트 목록
-    """
-    tweets = []
-    for tweet in sntwitter.TwitterSearchScraper(f'{keyword} lang:en').get_items():
-        if len(tweets) >= limit:
-            break
-        tweets.append(tweet.content)
-    return tweets
+# ✅ Reddit API 객체 초기화
+reddit = praw.Reddit(
+    client_id=REDDIT_CLIENT_ID,
+    client_secret=REDDIT_CLIENT_SECRET,
+    user_agent=REDDIT_USER_AGENT
+)
 
-def analyze_sentiment_finbert(texts: List[str]) -> float:
-    """
-    ▶ 수집한 글을 FinBERT로 감정 분석
-    Args:
-        texts (List[str]): 분석할 텍스트 목록
-    Returns:
-        float: 전체 평균 감정 점수 (-1 ~ 1)
-    """
-    scores = []
-    for text in texts:
-        inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
-        with torch.no_grad():
-            outputs = model(**inputs)
-            probs = torch.nn.functional.softmax(outputs.logits, dim=1)[0]
-            # FinBERT: [neutral, positive, negative]
-            score = probs[1] - probs[2]  # 긍정 - 부정
-            scores.append(score.item())
-
-    if not scores:
-        return 0.0
-    return float(np.clip(np.mean(scores), -1.0, 1.0))
+# ✅ FinBERT 모델 로드
+model_name = "yiyanghkust/finbert-tone"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+sentiment_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert")
 
 def analyze_community_sentiment(keyword: str = "bitcoin") -> float:
     """
-    ✅ 통합 커뮤니티 감정 분석 함수
-    Returns:
-        float: 커뮤니티 감정 점수 (-1.0 ~ 1.0)
+    Reddit에서 주어진 키워드에 대해 최근 게시글 감정 분석 후 평균 점수 반환
+    긍정: +1.0 / 중립: 0 / 부정: -1.0
     """
     try:
-        tweets = fetch_tweets(keyword=keyword, limit=30)
-        score = analyze_sentiment_finbert(tweets)
-        return round(score, 3)
+        posts = reddit.subreddit("CryptoCurrency").search(keyword, limit=10)
+        scores = []
+        for post in posts:
+            text = post.title + ". " + (post.selftext or "")
+            result = sentiment_pipeline(text[:512])[0]
+            label = result["label"]
+            if label == "positive":
+                scores.append(1.0)
+            elif label == "neutral":
+                scores.append(0.0)
+            else:
+                scores.append(-1.0)
+        if not scores:
+            return 0.0
+        return round(sum(scores) / len(scores), 2)
     except Exception as e:
         print(f"⚠️ 커뮤니티 감정 분석 실패: {e}")
         return 0.0
+
+def analyze_finbert_sentiment(query="btc OR bitcoin OR crypto", subreddit="CryptoCurrency", limit=20):
+    """
+    📌 FinBERT 기반 커뮤니티 감정 분석
+    :param query: 검색 키워드
+    :param subreddit: 분석 대상 서브레딧
+    :param limit: 최대 게시물 수
+    :return: 감정 점수 (긍정=1, 중립=0, 부정=-1의 평균)
+    """
+    try:
+        posts = reddit.subreddit(subreddit).search(query, sort="new", limit=limit)
+        texts = []
+        for post in posts:
+            if post.title:
+                texts.append(post.title)
+            if post.selftext:
+                texts.append(post.selftext)
+
+        if not texts:
+            return 0.0  # 분석할 텍스트 없음
+
+        results = sentiment_pipeline(texts)
+        score = 0.0
+        for result in results:
+            label = result["label"].lower()
+            if "positive" in label:
+                score += 1
+            elif "negative" in label:
+                score -= 1
+            # neutral은 0
+
+        final_score = round(score / len(results), 2)
+        return final_score
+
+    except Exception as e:
+        logging.error(f"❌ FinBERT 감정 분석 실패: {e}")
+        print(f"⚠️ FinBERT 감정 분석 실패: {e}")
+        return 0.0
+
+# ✅ 테스트 실행
+if __name__ == "__main__":
+    score = analyze_finbert_sentiment()
+    print(f"📈 FinBERT 커뮤니티 감정 점수: {score}")
