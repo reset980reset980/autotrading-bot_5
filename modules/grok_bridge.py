@@ -27,9 +27,9 @@ GROK_API_KEY = os.getenv("GROK_API_KEY")
 # 최신 엔드포인트로 교체됨
 GROK_API_URL = "https://api.x.ai/v1/chat/completions"
 
-def query_grok(prompt: str, model: str = "grok-3") -> str:
+def query_grok(prompt: str, model: str = "grok-3-beta") -> str:
     """
-    Grok API에 전략 판단 프롬프트를 전달하고 응답 반환
+    Grok API에 전략 판단 프롬프트 전달 → 한국어 응답으로 반환
     """
     headers = {
         "Authorization": f"Bearer {GROK_API_KEY}",
@@ -39,8 +39,18 @@ def query_grok(prompt: str, model: str = "grok-3") -> str:
     payload = {
         "model": model,
         "messages": [
-            {"role": "system", "content": "You are a helpful trading assistant."},
-            {"role": "user", "content": prompt}
+            {
+                "role": "system",
+                "content": (
+                    "You are a helpful AI trading assistant. "
+                    "Please answer in Korean only. "
+                    "Respond concisely and directly with LONG, SHORT, or HOLD decisions."
+                )
+            },
+            {
+                "role": "user",
+                "content": prompt
+            }
         ],
         "temperature": 0.3
     }
@@ -49,7 +59,6 @@ def query_grok(prompt: str, model: str = "grok-3") -> str:
         response = requests.post(GROK_API_URL, headers=headers, json=payload, timeout=15)
         response.raise_for_status()
         return response.json()["choices"][0]["message"]["content"]
-
     except Exception as e:
         print("⚠️ Grok 호출 실패:", e)
-        return "HOLD"  # 예외 발생 시 기본 전략
+        return "HOLD"

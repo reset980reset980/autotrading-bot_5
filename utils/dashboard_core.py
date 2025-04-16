@@ -1,67 +1,92 @@
-# 📁 파일명: utils/dashboard_core.py
-"""
-📌 목적: Streamlit 대시보드에서 전략 결과, 감정 분석, 뉴스 등을 시각적으로 출력하기 위한 공통 함수 모듈
-📌 기능:
-  - display_strategy_result(): 전략 판단 결과를 시각적으로 표시
-  - display_sentiment_banner(): 감정 점수를 배너 형태로 강조
-  - display_news_table(): 수집된 뉴스 리스트 시각화
-📌 프롬프트 요약:
-  ▶ "Streamlit에서 전략 판단 결과와 감정 분석, 뉴스 정보를 시각적으로 효과적으로 표현할 수 있는 컴포넌트 기반 함수들을 구성하라."
-"""
+# 📁 파일명: modules/dashboard_core.py
+# 🎯 목적: Streamlit 기반 실시간 대시보드 구성 (뉴스 + 감정 분석 + 전략 실행 + 로그 분석)
+# 🔄 전략 실행은 data_cleaner.py를 통해 안전하게 호출
 
+import os
+import sys
+import json
 import streamlit as st
 
-def display_strategy_result(result: dict):
-    signal = result.get("signal", "hold")
-    signal_text = {
-        "long": "📈 LONG (상승 진입)",
-        "short": "📉 SHORT (하락 진입)",
-        "hold": "⏸️ HOLD (관망)"
-    }.get(signal, "❓")
+# 모듈 경로 추가
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-    color = {
-        "long": "lightgreen",
-        "short": "#ffb3b3",
-        "hold": "lightgray"
-    }.get(signal, "white")
+# 📦 외부 모듈
+from utils.news_fetcher import fetch_news
+from utils.sentiment import analyze_news, get_sentiment_summary
+from utils.indicators import get_indicators
+from utils.data_cleaner import run_strategy_safe as run_strategy
+from utils.data_cleaner import get_strategy_summary_safe as get_strategy_summary
 
-    st.markdown(f"""
-    <div style="padding:1rem; background-color:{color}; border-radius:1rem;">
-        <h4>{signal_text}</h4>
-        <p>📌 전략 요약: {result.get('summary', 'N/A')}</p>
-        <ul>
-            <li>🎯 TP: {result.get('tp', 0)}%</li>
-            <li>🛡 SL: {result.get('sl', 0)}%</li>
-            <li>📊 RSI: {result.get('rsi')}</li>
-            <li>🧠 감정 점수: {result.get('sentiment')}</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+# 📦 내부 시스템 모듈
+from modules.logger import log_trade_result
+from modules.telegram_notifier import notify_trade_result
+from modules.streamlit_visualizer import visualize_sentiment_over_time
+from modules.visualizer import plot_indicators, plot_hourly_performance
+from modules.time_impact_analyzer import analyze_by_hour
 
-def display_sentiment_banner(score: float):
-    if score > 0.3:
-        msg = "📈 긍정적 심리 우세 - 상승 가능성"
-        color = "#d4fcd4"
-    elif score < -0.3:
-        msg = "📉 부정적 심리 우세 - 하락 가능성"
-        color = "#fcd4d4"
-    else:
-        msg = "🔍 혼조 또는 중립 심리"
-        color = "#f4f4f4"
 
-    st.markdown(f"""
-    <div style="padding:0.5rem; background-color:{color}; border-left:5px solid gray;">
-        <strong>{msg}</strong>
-    </div>
-    """, unsafe_allow_html=True)
+def display_dashboard():
+    st.set_page_config(page_title="AI 자동매매 대시보드", layout="wide")
+    st.title("🤖 AI 자동매매 전략 대시보드")
+    st.caption("뉴스 + 감정 분석 + 기술 지표 + 전략 판단 통합")
 
-def display_news_table(news_list: list):
-    for news in news_list:
-        st.markdown(f"""
-        <div style="border-bottom:1px solid #ccc; padding:0.3rem 0;">
-            <a href="{news.get('url')}" target="_blank">
-                <strong>{news.get('title')}</strong>
-            </a>
-            <br><small>📰 {news.get('source')}</small>
-        </div>
-        """, unsafe_allow_html=True)
+    col1, col2 = st.columns([2, 3])
+
+    # 👉 왼쪽: 뉴스 + 전략 실행
+    with col1:
+        st.subheader("📰 실시간 뉴스")
+        if st.button("📰 뉴스 수집"):
+            news = fetch_news()
+            for article in news:
+                st.markdown(f"- [{article['title']}]({article['url']})")
+
+        st.subheader("⚙️ 전략 실행")
+        if st.button("🚀 전략 실행"):
+            result = run_strategy()
+            st.success(get_strategy_summary(result))
+
+            dummy_entry = {
+                "signal": result.get("signal", "hold"),
+                "tp": result.get("tp", 0),
+                "sl": result.get("sl", 0),
+                "rsi": result.get("rsi", 50),
+                "sentiment": result.get("sentiment_score", 0.0)
+            }
+            log_trade_result(dummy_entry, result)
+
+            notify_trade_result(result, {
+                "result": "N/A",
+                "pnl": 0,
+                "balance": 0
+            })
+
+    # 👉 오른쪽: 감정 분석 + 지표 시각화 + 전략 성능 분석
+    with col2:
+        st.subheader("💡 감정 분석 요약")
+        news = fetch_news()
+        sentiment_score = analyze_news(news)
+        sentiment_text = get_sentiment_summary(sentiment_score)
+        st.info(f"🧠 감정 분석 결과: {sentiment_text} (점수: {sentiment_score:.2f})")
+
+        st.markdown("### 📈 감정 점수 시계열")
+        visualize_sentiment_over_time(news)
+
+        st.markdown("### 🧪 기술적 지표 시각화")
+        try:
+            with open("logs/simulation/simulated_trades_cleaned.json", 'r', encoding='utf-8') as f:
+                logs = json.load(f)
+            plot_indicators(logs)
+        except:
+            st.warning("⚠️ 로그 파일이 없어 지표 시각화를 건너뜁니다.")
+
+        st.markdown("### ⏱ 시간대별 전략 성능 분석")
+        try:
+            summary = analyze_by_hour(logs)
+            plot_hourly_performance(summary)
+        except:
+            st.warning("⚠️ 로그 파일이 없어 전략 성능 분석을 건너뜁니다.")
+
+
+# ✅ 단독 실행 시 대시보드 실행
+if __name__ == "__main__":
+    display_dashboard()

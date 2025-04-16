@@ -1,24 +1,23 @@
 # 📁 파일명: utils/strategy_analyzer.py
-# 🎯 목적: 전체 전략 판단 로직 통합 (Grok 응답, 딥러닝 예측, 상위 프레임 보완, 커뮤니티 감정 포함)
+# 🎯 목적: 전체 전략 판단 로직 통합 (Grok 응답, 딥러닝 예측, 커뮤니티 기반 보정 포함)
 # 🔄 전체 흐름:
-#     - 기술 지표 및 감정 점수 분석
+#     - 기술 지표 + 감정 점수 분석
 #     - Grok AI 판단 결과 해석
-#     - 딥러닝 예측 결과 비교
-#     - 커뮤니티 분석 점수까지 결합하여 전략 생성
+#     - HOLD 시 보완 전략 (상위 프레임)
+#     - 딥러닝 예측 기반 보정
+#     - 커뮤니티 반응 기반 필터링
 # 📚 주요 함수:
-#     - analyze_strategy(): 기본 전략 판단
-#     - analyze_strategy_with_context(): 상위 프레임 기반 보완 전략
-#     - run_strategy(): 전체 실행 진입점
-#     - get_strategy_summary(): 전략 설명 요약
+#     - analyze_strategy()
+#     - analyze_strategy_with_context()
+#     - apply_model_correction()
+#     - apply_community_adjustment()
 
 from utils.indicators import get_indicators
-from utils.data_cleaner import run_strategy_safe as run_strategy
-from utils.data_cleaner import get_strategy_summary_safe as get_strategy_summary
-from models.model_predictor import predict_with_model  # ✅ 딥러닝 예측
+from models.model_predictor import predict_with_model, update_sequence
 from modules.grok_bridge import query_grok
 from modules.community_sentiment import analyze_community_sentiment
 
-# ✅ Grok 기반 응답 해석 + 전략 판단
+# ✅ Grok 응답 해석
 def analyze_strategy(ai_response: str, indicators: dict, sentiment_score: float) -> tuple:
     signal = "hold"
     tp = 0.0
@@ -52,24 +51,26 @@ def analyze_strategy(ai_response: str, indicators: dict, sentiment_score: float)
         "tema": indicators.get("tema"),
         "macd": indicators.get("macd"),
         "sentiment": sentiment_score,
-        "summary": f"RSI: {indicators['rsi']}, BB 위치: {indicators['bb']}, 감정: {sentiment_score}, 다이버전스: {indicators.get('divergence', '없음')}"
+        "summary": f"RSI: {indicators['rsi']}, BB: {indicators['bb']}, 감정: {sentiment_score}, 다이버전스: {indicators.get('divergence', '없음')}"
     }
 
-# ✅ 상위 프레임 기반 전략 보완 판단
+# ✅ 상위 프레임 보완 전략
 def analyze_strategy_with_context(sentiment_score: float, base_interval="15m") -> dict:
     indicators_base = get_indicators("BTC/USDT", base_interval)
     indicators_1h = get_indicators("BTC/USDT", "1h")
     indicators_4h = get_indicators("BTC/USDT", "4h")
 
     prompt = f"""
-Technical Indicators:
+[Analyze and respond in Korean]
+
+기술적 지표:
 RSI: {indicators_base['rsi']}, BB: {indicators_base['bb']},
 EMA: {indicators_base['ema']}, TEMA: {indicators_base['tema']},
 MACD: {indicators_base['macd']}
-Market Sentiment: {sentiment_score}
-Based on the above, should we go LONG, SHORT, or HOLD?
-"""
+시장 심리 점수: {sentiment_score}
 
+이 데이터를 기반으로 LONG / SHORT / HOLD 중 적절한 전략을 판단해줘.
+"""
     ai_response = query_grok(prompt).strip().upper()
 
     signal = "hold"
@@ -99,5 +100,33 @@ Based on the above, should we go LONG, SHORT, or HOLD?
         "tema": indicators_base.get("tema"),
         "macd": indicators_base.get("macd"),
         "sentiment": sentiment_score,
-        "summary": f"RSI: {indicators_base['rsi']}, BB 위치: {indicators_base['bb']}, 감정: {sentiment_score}, 다이버전스: {indicators_base.get('divergence', '없음')}"
+        "summary": f"보완 전략 | RSI: {indicators_base['rsi']}, MACD: {indicators_base['macd']}, 감정: {sentiment_score}"
     }
+
+# ✅ 딥러닝 기반 전략 보정
+def apply_model_correction(signal: str, indicators: dict, sentiment: float) -> str:
+    update_sequence({
+        "rsi": indicators.get("rsi"),
+        "macd": indicators.get("macd"),
+        "ema": indicators.get("ema"),
+        "tema": indicators.get("tema"),
+        "sentiment": sentiment
+    })
+
+    model_signal = predict_with_model()
+    print(f"🧠 딥러닝 판단: {model_signal}")
+
+    return model_signal if model_signal != "hold" else signal
+
+# ✅ 커뮤니티 감정 기반 필터링
+def apply_community_adjustment(signal: str) -> str:
+    community_score = analyze_community_sentiment("BTC")
+    print(f"📣 커뮤니티 감정 점수: {community_score:.2f}")
+
+    if signal == "long" and community_score < -0.3:
+        print("🛑 커뮤니티 부정적 → long 차단")
+        return "hold"
+    elif signal == "short" and community_score > 0.3:
+        print("🛑 커뮤니티 긍정적 → short 차단")
+        return "hold"
+    return signal

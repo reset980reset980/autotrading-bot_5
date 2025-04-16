@@ -6,6 +6,7 @@
 # 📬 주요 함수:
 #     - send_telegram_message(): 텍스트 메시지를 지정 채팅방으로 전송
 #     - notify_trade_result(): 매매 전략 및 실행 결과 요약 전송
+#     - notify_system_event(): 시스템 오류 또는 이벤트 상황 텔레그램 알림
 # 🔐 환경 설정: .env 파일에서 TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID 로 설정
 # 🧠 작업 프롬프트 요약:
 #     ▶ "매매 발생 시 텔레그램으로 요약 메시지를 전송하라. 간결하고 직관적인 형태로 전달될 것."
@@ -18,6 +19,7 @@ load_dotenv()
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
 
 def send_telegram_message(message: str):
     """
@@ -40,6 +42,7 @@ def send_telegram_message(message: str):
     except Exception as e:
         print("⚠️ 텔레그램 전송 중 예외 발생:", e)
 
+
 def notify_trade_result(entry: dict, result: dict):
     """
     📣 전략 및 거래 결과를 텔레그램으로 전송
@@ -54,6 +57,18 @@ def notify_trade_result(entry: dict, result: dict):
 💰 수익: {result.get('pnl', 'N/A')} | 잔고: {result.get('balance', 'N/A')}
 """
     send_telegram_message(msg.strip())
+
+
+def notify_system_event(title: str, detail: str):
+    """
+    ⚠️ 시스템 에러/알림을 위한 별도 텔레그램 메시지
+    """
+    msg = f"""
+🚨 <b>{title}</b>
+<code>{detail}</code>
+"""
+    send_telegram_message(msg.strip())
+
 
 # ✅ 단독 실행 예시
 if __name__ == "__main__":
@@ -71,4 +86,9 @@ if __name__ == "__main__":
             "pnl": 123.45,
             "balance": 1012300.0
         }
+    )
+
+    notify_system_event(
+        "모델 로드 오류",
+        "mse 손실 함수가 정의되지 않아 모델 로딩 실패"
     )

@@ -1,31 +1,33 @@
-# modules/time_impact_analyzer.py
+# 📁 파일명: modules/time_impact_analyzer.py
+# 🎯 목적: 시간대별 전략 성능(승률, 수익률 등)을 분석하여 최적 매매 시간 도출
+# 🔁 전체 흐름도:
+#     - 거래 로그를 시간(HH) 단위로 그룹화
+#     - 승률, 평균 수익률 등 산출
+#     - 시각화 또는 전략 판단 최적 시간대 추론에 활용
+# 🔧 주요 함수:
+#     - analyze_by_hour(): 시간대별 요약 통계 반환
+# 💬 작업 프롬프트 요약:
+#     ▶ "하루 중 어느 시간대에 전략 성능이 좋은지 분석하라."
 
 import pandas as pd
 from collections import defaultdict
+from typing import List, Dict
 
-def analyze_by_hour(trade_logs: list) -> dict:
+def analyze_by_hour(trade_logs: List[Dict]) -> Dict[int, Dict]:
     """
-    시간대별 전략 성능 분석을 수행합니다.
+    거래 기록을 시간대별로 분석하여 전략 성능 통계를 반환합니다.
 
     Args:
-        trade_logs (list[dict]): 매매 기록 리스트. 각 항목은 다음을 포함:
-            {
-                "timestamp": "2025-04-14T02:15:00",
-                "signal": "long",
-                "result": "✅ WIN" or "❌ LOSS",
-                "profit": 30.0
-            }
+        trade_logs (List[Dict]): 전략 실행 로그
+            예: [{"timestamp": "2025-04-14T02:15:00", "result": "✅ WIN", "profit": 42.5}, ...]
 
     Returns:
-        dict: 시간(HH) 단위로 묶은 승률, 거래 수, 평균 수익률
+        Dict[int, Dict]: 시간(HH)별 성능 요약 {hour: {"win_rate": float, "avg_profit": float, "trade_count": int}}
     """
-    hourly_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "count": 0, "total_profit": 0})
+    hourly_stats = defaultdict(lambda: {"wins": 0, "losses": 0, "count": 0, "total_profit": 0.0})
 
     for trade in trade_logs:
         time_str = trade.get("timestamp")
-        if not time_str:
-            continue
-
         try:
             hour = pd.to_datetime(time_str).hour
         except Exception:
@@ -42,16 +44,26 @@ def analyze_by_hour(trade_logs: list) -> dict:
         elif "LOSS" in result:
             hourly_stats[hour]["losses"] += 1
 
-    # 계산 정리
     summary = {}
     for hour, stats in hourly_stats.items():
-        winrate = stats["wins"] / stats["count"] if stats["count"] else 0
-        avg_profit = stats["total_profit"] / stats["count"] if stats["count"] else 0
+        count = stats["count"]
+        winrate = stats["wins"] / count if count > 0 else 0.0
+        avg_profit = stats["total_profit"] / count if count > 0 else 0.0
 
         summary[hour] = {
             "win_rate": round(winrate, 3),
-            "trade_count": stats["count"],
+            "trade_count": count,
             "avg_profit": round(avg_profit, 2)
         }
 
     return summary
+
+
+# ✅ 예시 사용
+if __name__ == "__main__":
+    sample_logs = [
+        {"timestamp": "2025-04-14T02:15:00", "result": "✅ WIN", "profit": 42.5},
+        {"timestamp": "2025-04-14T02:45:00", "result": "❌ LOSS", "profit": -20.0},
+        {"timestamp": "2025-04-14T14:00:00", "result": "✅ WIN", "profit": 70.0},
+    ]
+    result
