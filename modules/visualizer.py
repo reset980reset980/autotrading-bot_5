@@ -1,77 +1,23 @@
-"""
-파일명: visualizer.py
-📌 목적:
-  - 감정 분석 결과와 전략 판단 흐름을 시간대별로 시각화하여 사용자에게 제공
-  - Streamlit 기반 대시보드에서 사용
-
-📊 기능:
-  - 감정 점수 시계열 꺾은선 그래프
-  - 전략 판단 흐름 (롱/숏/홀드) 타임라인 표시
-  - RSI, MACD 등 기술 지표 시각적 비교 (선택적으로 추가 가능)
-
-📦 의존 라이브러리:
-  - matplotlib
-  - pandas
-
-🧠 작업 프롬프트:
-  ▶ "전략 판단 결과를 시간 순서대로 정렬하고, 감정 점수와 전략 신호를 시각적으로 표현하여 사용자가 흐름을 직관적으로 이해할 수 있도록 하라."
-"""
+# 📁 파일명: modules/visualizer.py
+# 🎯 목적: Matplotlib 기반 시각화 모듈
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import plotly.express as px
-import streamlit as st
 
 def plot_sentiment_trend(data: list):
-    """
-    📈 감정 점수 시계열 그래프 (시간대별 감정 흐름)
-    """
     df = pd.DataFrame(data)
     df['time'] = pd.to_datetime(df['time'])
 
     plt.figure(figsize=(10, 4))
     plt.plot(df['time'], df['sentiment'], marker='o', linestyle='-')
     plt.title("📊 시간대별 감정 점수 변화")
-    plt.xlabel("시간")
-    plt.ylabel("감정 점수")
     plt.axhline(y=0, color='gray', linestyle='--')
     plt.grid(True)
     plt.tight_layout()
     plt.xticks(rotation=45)
     plt.show()
 
-    """
-📌 예시: 시각화용 함수 템플릿 (Streamlit + Plotly 기반)
-    """
-def visualize_sentiment_over_time(news_list):
-    """
-    시간대별 뉴스 감정 점수 변화 시각화 (Plotly)
-    """
-    if not news_list:
-        st.warning("분석할 뉴스가 없습니다.")
-        return
-
-    df = pd.DataFrame([
-        {
-            "time": news.get("timestamp"),
-            "score": news.get("sentiment", 0.0)
-        }
-        for news in news_list if news.get("timestamp")
-    ])
-
-    df["time"] = pd.to_datetime(df["time"])
-    df = df.sort_values("time")
-
-    fig = px.line(df, x="time", y="score", title="🧠 시간대별 뉴스 감정 추이", markers=True)
-    fig.update_layout(yaxis_title="감정 점수 (-1 ~ +1)", xaxis_title="시간")
-
-    st.plotly_chart(fig, use_container_width=True)
-    
-
 def plot_strategy_signals(data: list):
-    """
-    🚦 전략 신호 시각화 (롱/숏/홀드 타임라인)
-    """
     df = pd.DataFrame(data)
     df['time'] = pd.to_datetime(df['time'])
 
@@ -80,10 +26,8 @@ def plot_strategy_signals(data: list):
 
     plt.figure(figsize=(10, 4))
     for idx, row in df.iterrows():
-        color = color_map.get(row['signal'], 'gray')
-        marker = marker_map.get(row['signal'], 'o')
-        plt.scatter(row['time'], 0, color=color, marker=marker, s=100, label=row['signal'] if idx == 0 else "")
-    
+        plt.scatter(row['time'], 0, color=color_map.get(row['signal'], 'gray'),
+                    marker=marker_map.get(row['signal'], 'o'), s=100)
     plt.title("📌 전략 흐름 (롱/숏/홀드)")
     plt.yticks([])
     plt.grid(True)
@@ -91,11 +35,28 @@ def plot_strategy_signals(data: list):
     plt.tight_layout()
     plt.show()
 
+def plot_hourly_performance(hourly_summary: dict):
+    hours = sorted(hourly_summary.keys())
+    win_rates = [hourly_summary[h]["win_rate"] * 100 for h in hours]
+    avg_profits = [hourly_summary[h]["avg_profit"] for h in hours]
 
+    fig, ax1 = plt.subplots(figsize=(10, 5))
+    ax1.bar(hours, avg_profits, alpha=0.6, label='평균 수익률')
+    ax2 = ax1.twinx()
+    ax2.plot(hours, win_rates, color='orange', marker='o', label='승률(%)')
+    plt.title("🕒 시간대별 전략 성능")
+    fig.legend(loc="upper left")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    
 def plot_indicators(data: list):
     """
     📊 RSI, MACD 시계열 그래프
     """
+    import pandas as pd
+    import matplotlib.pyplot as plt
+
     df = pd.DataFrame(data)
     df['time'] = pd.to_datetime(df['time'])
 
@@ -117,3 +78,4 @@ def plot_indicators(data: list):
     plt.tight_layout()
     plt.xticks(rotation=45)
     plt.show()
+    

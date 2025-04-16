@@ -9,24 +9,37 @@
 # 💬 작업 프롬프트 요약:
 #     ▶ "여러 전략 중 성능이 가장 높은 전략을 선택하여 매매에 반영하라."
 
-def switch_strategy(strategies: list) -> dict:
+from typing import List, Dict, Any
+
+def switch_strategy(strategies: List[Dict[str, Any]]) -> Dict[str, Any]:
     """
-    전략 후보 리스트에서 최고 성능 전략을 선택 (score 필드 기반)
-    :param strategies: [{"name": "ai", "score": 0.82, "result": {...}}, ...]
-    :return: 선택된 전략의 result 딕셔너리
+    전략 후보 리스트에서 최고 성능 전략을 선택합니다.
+
+    Args:
+        strategies (List[Dict]): [{"name": "ai", "score": 0.82, "result": {...}}, ...]
+
+    Returns:
+        Dict: 선택된 전략의 결과에 'selected_strategy', 'score'를 포함하여 반환
     """
     if not strategies:
         return {"signal": "hold", "reason": "No strategies provided"}
 
-    # 점수 높은 순 정렬
-    sorted_strategies = sorted(strategies, key=lambda x: x["score"], reverse=True)
-    best = sorted_strategies[0]
+    try:
+        # 점수 높은 순으로 정렬
+        sorted_strategies = sorted(strategies, key=lambda x: x.get("score", 0), reverse=True)
+        best = sorted_strategies[0]
 
-    return {
-        **best["result"],
-        "selected_strategy": best["name"],
-        "score": best["score"]
-    }
+        return {
+            **best.get("result", {}),
+            "selected_strategy": best.get("name", "unknown"),
+            "score": best.get("score", 0)
+        }
+
+    except Exception as e:
+        return {
+            "signal": "hold",
+            "reason": f"Strategy selection failed: {str(e)}"
+        }
 
 # ✅ 예시 사용
 if __name__ == "__main__":
