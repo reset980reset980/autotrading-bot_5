@@ -1,0 +1,9 @@
+[2025-04-16  8:30:01.81] ?¶ï¸ ?ë™ë§¤ë§¤ ?œì‘ 
+Device set to use cpu
+Traceback (most recent call last):
+  File "D:\ai_trading_streamlit\auto_trader.py", line 43, in <module>
+    main()
+  File "D:\ai_trading_streamlit\auto_trader.py", line 24, in main
+    print(f"\n\U0001f552 [{now}] Àü·« ½ÇÇà ½ÃÀÛ -----------------------------")
+UnicodeEncodeError: 'cp949' codec can't encode character '\U0001f552' in position 2: illegal multibyte sequence
+[2025-04-16  8:30:36.03] ???¤ë¥˜ ë°œìƒ 

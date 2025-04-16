@@ -10,7 +10,7 @@ python 압축_버전지정_자동.py
 pause
 """
 
-bat_final_path = "/mnt/data/🧳버전지정_자동압축.bat"
+bat_final_path = "/mnt/data/버전지정_자동압축.bat"
 with open(bat_final_path, "w", encoding="utf-8") as f:
     f.write(bat_script_final)
 
